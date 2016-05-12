@@ -22,7 +22,5 @@ set term pdfcairo dashed transparent fontscale 0.5 enhanced linewidth 4 rounded 
 set output "$$NAME.pdf"
 plot "$$NAME.dataset.white.uarrow" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with points ls 3 t 'Data (First transmit)',\
  "$$NAME.dataset.red.uarrow" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with points ls 1 t 'Data Retransmits',\
- "$$NAME.dataset.green.line" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with lines lt 1 lw 2 lc 0 t 'Acked Data',\
- "$$NAME.loss_points" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with lines lt 2 lw 2 lc 3 t 'Policing Rate',\
- "$$NAME.loss_points_2" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with lines lt 2 lw 2 lc 4 t 'Policing Rate (2)'
+ "$$NAME.dataset.green.line" using ($1-$$START_TIME):(($2-$$START_SEQ)/1000000.0) with lines lt 1 lw 2 lc 0 t 'Acked Data'
 set output

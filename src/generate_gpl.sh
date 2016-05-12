@@ -27,11 +27,6 @@
 # 1. Data packets (first transmits)
 # 2. Data packets (retransmissions)
 # 3. ACK progress (ignoring SACKs)
-# 4. The estimated policing rate based on the progress between the first and
-#    last loss
-# 5. As above, but ignoring the first and last two losses, i.e. the policing
-#    rate is estimated based on the progress between the third and third-last
-#    loss
 #
 # Required tools: tcptrace, xpl2gpl, gnuplot
 set -e
@@ -79,19 +74,6 @@ if [[ $# -gt 3 ]]; then
 else
     sed -i.bkp "s/\$\$RANGE_COMMAND//g" trace.gpl
 fi
-
-# Find first and last lost packet and the corresponding original transmissions
-FIRST_RTX_SEQ=$(head -1 $RTX_FILE | awk '{print $2}')
-LAST_RTX_SEQ=$(tail -1 $RTX_FILE | awk '{print $2}')
-
-awk -v "seq=$FIRST_RTX_SEQ" '{if ($2 > seq) {print line; exit;} else line=$0}' $TX_FILE > trace.loss_points
-awk -v "seq=$LAST_RTX_SEQ" '{if ($2 > seq) {print line; exit;} else line=$0} END {print line}' $TX_FILE | head -1 >> trace.loss_points
-
-FIRST_RTX_SEQ=$(head -3 $RTX_FILE | tail -1 | awk '{print $2}')
-LAST_RTX_SEQ=$(tail -3 $RTX_FILE | head -1 | awk '{print $2}')
-
-awk -v "seq=$FIRST_RTX_SEQ" '{if ($2 > seq) {print line; exit;} else line=$0}' $TX_FILE > trace.loss_points_2
-awk -v "seq=$LAST_RTX_SEQ" '{if ($2 > seq) {print line; exit;} else line=$0} END {print line}' $TX_FILE | head -1 >> trace.loss_points_2
 
 # Generate sequence plot and overlay policing rate
 gnuplot trace.gpl
