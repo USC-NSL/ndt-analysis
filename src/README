@@ -1,0 +1,40 @@
+To run the analysis pipeline (analyze NDT packet traces and produce summary
+metrics and plots) follow these steps:
+
+1. Check out the submodules. Especially geoip-api-c is needed to map IP
+addresses to AS numbers, countries, etc.; Packetdrill is only needed to generate
+additional test files; googletest is used for all testing purposes but not
+needed to run the pipeline.
+
+2. Follow the instructions in geoiplookup_source and compile the geoiplookup
+executable.
+
+3. Install dependencies (e.g. C++14 support is needed, and there are a bunch of
+executables that the latency_analysis/Makefile needs and it will complain if you
+don't have them later. Check the EXECUTABLES variable in
+latency_analysis/Makefile for a list)
+
+4. Run 'make analyze_latency' (if you have the testing framework set up you can
+also run the test suite via 'make test_latency && ./test_latency')
+
+5. Run 'cp analyze_latency latency-analysis/ && cd latency-analysis'
+
+6. Set up the file filters (i.e. constrain the amount of data to analyze. The
+Makefile is pre-configured to analyze everything from March 2016. For
+longitudinal analysis checkout the README in the results-pdf folder for ideas).
+
+7. Run 'make clean-results'
+
+8. Run 'make plots' (optionally in parallel since this will take hours or days,
+depending on the filter!, 'make -j12 plots' worked fine on a more powerful machine).
+
+9. The raw results are in the *.gz files. Post-processed data are in *.csv
+files. All plots are PDFs in the 'pdfs/' folder.
+
+10. Run 'make pack-results' to generate a single tarball of all PDFs which also
+creates a subfolder structure grouping PDFs together inside.
+
+
+I tried to make this pipeline somewhat efficient and tried to add comments as
+much as possible. Nevertheless I clearly used a couple of hacky solutions along
+the way that could be improved upon next time :)
