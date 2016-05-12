@@ -1,0 +1,9 @@
+[submodule "src/geoip-api-c"]
+	path = src/geoip-api-c
+	url = https://github.com/maxmind/geoip-api-c
+[submodule "src/googletest"]
+	path = src/googletest
+	url = https://github.com/google/googletest.git
+[submodule "src/packetdrill"]
+	path = src/packetdrill
+	url = https://github.com/google/packetdrill.git

@@ -1,0 +1,4 @@
+Source on Github:
+https://github.com/maxmind/geoip-api-c
+
+The modified geoiplookup.c replaces apps/geoiplookup.c
