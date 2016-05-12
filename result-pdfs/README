@@ -1,0 +1,15 @@
+These PDF tarballs were generated using the following filters in their
+respective Makefiles.
+
+pdfs-03-16:
+SOURCE_DATE_FILTER := 2016/03/*
+
+Note that the per-year plots are automatically generated but are empty since
+there aren't multiple years to compare
+
+pdfs-yearly:
+SOURCE_DATE_FILTER := 201*/03/1*
+NUM_YEARS = 5
+FIRST_YEAR = 2011
+LAST_YEAR = 2016
+YEAR_COLUMNS = "2011,,2012,,2013,,2014,,2016"
