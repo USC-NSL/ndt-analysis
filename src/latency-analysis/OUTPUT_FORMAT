@@ -1,0 +1,67 @@
+ 1 Input filename
+ 2 Flow index
+ 3 Direction
+ 4 # data packets
+ 5 # lost packets
+ 6 # missing trigger packets
+ 7 All: Tail latency (overall, in microseconds)
+ 8 All: Tail latency (from propagation)
+ 9 All: Tail latency (from loss)
+10 All: Tail latency (from loss trigger)
+11 All: Tail latency (from queueing)
+12 All: Tail latency (from other)
+13 All: Tail latency (from no-queue timeout)
+14 All: Trigger breakdown: from timeout
+15 All: Trigger breakdown: from late ACK arming
+16 All: Trigger breakdown: from late ACK triggering
+17 All: Trigger breakdown: from late trigger(s) for final trigger
+18 All: Unacked bytes/RTT Pearson correlation coefficient
+19 All: c_0 value of linear fit (y = c_0 + c_1 * x)
+20 All: c_1 value of linear fit
+21 All: Sum-squared error of linear fit
+22 All: Goodput before worst packet (bps)
+23 All: Bytes acked before worst packet
+24 All: Bytes needed buffered (to compensate worst packet delay)
+25 All: Bytes unacked before worst packet
+26 Seq 1: RTO estimate
+27 Seq 1: TLP estimate
+28 Seq 1: TLP+delayed ACK estimate
+29 Seq 1: Queue-free RTO estimate
+30 Seq 1: Queue-free TLP estimate
+31 Seq 1: Queue-free TLP+delayed ACK estimate
+32 Seq 20480: RTO estimate
+33 Seq 20480: TLP estimate
+34 Seq 20480: TLP+delayed ACK estimate
+35 Seq 20480: Queue-free RTO estimate
+36 Seq 20480: Queue-free TLP estimate
+37 Seq 20480: Queue-free TLP+delayed ACK estimate
+38 Seq 51200: RTO estimate
+39 Seq 51200: TLP estimate
+40 Seq 51200: TLP+delayed ACK estimate
+41 Seq 51200: Queue-free RTO estimate
+42 Seq 51200: Queue-free TLP estimate
+43 Seq 51200: Queue-free TLP+delayed ACK estimate
+44 Seq 102400: RTO estimate
+45 Seq 102400: TLP estimate
+46 Seq 102400: TLP+delayed ACK estimate
+47 Seq 102400: Queue-free RTO estimate
+48 Seq 102400: Queue-free TLP estimate
+49 Seq 102400: Queue-free TLP+delayed ACK estimate
+50 Seq 204800: RTO estimate
+51 Seq 204800: TLP estimate
+52 Seq 204800: TLP+delayed ACK estimate
+53 Seq 204800: Queue-free RTO estimate
+54 Seq 204800: Queue-free TLP estimate
+55 Seq 204800: Queue-free TLP+delayed ACK estimate
+56 Seq 512000: RTO estimate
+57 Seq 512000: TLP estimate
+58 Seq 512000: TLP+delayed ACK estimate
+59 Seq 512000: Queue-free RTO estimate
+60 Seq 512000: Queue-free TLP estimate
+61 Seq 512000: Queue-free TLP+delayed ACK estimate
+62 Seq 1024000: RTO estimate
+63 Seq 1024000: TLP estimate
+64 Seq 1024000: TLP+delayed ACK estimate
+65 Seq 1024000: Queue-free RTO estimate
+66 Seq 1024000: Queue-free TLP estimate
+67 Seq 1024000: Queue-free TLP+delayed ACK estimate

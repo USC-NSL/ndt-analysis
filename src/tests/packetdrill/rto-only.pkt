@@ -1,0 +1,39 @@
+// Disable TLP
+`sysctl -q net.ipv4.tcp_early_retrans=2`
+
+// Establish a connection.
+0   socket(..., SOCK_STREAM, IPPROTO_TCP) = 3
++0  setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
+
++0  bind(3, ..., ...) = 0
++0  listen(3, 1) = 0
+
++0  < S 0:0(0) win 32792 <mss 1000,sackOK,nop,nop,nop,wscale 7>
++0  > S. 0:0(0) ack 1 <...>
+
++.1 < . 1:1(0) ack 1 win 257
++0  accept(3, ..., ...) = 4
+
+// Send 5 data segments
++0  write(4, ..., 5000) = 5000
++0  > . 1:2001(2000) ack 1
++0  > . 2001:4001(2000) ack 1
++0  > P. 4001:5001(1000) ack 1
+
+// Simulate an RTT of 100ms with 50ms queueing delay per packet
++.10 < . 1:1(0) ack 1001 win 257
++.05 < . 1:1(0) ack 2001 win 257
++.05 < . 1:1(0) ack 3001 win 257
++.05 < . 1:1(0) ack 4001 win 257
+
+// RTT is now 250ms
+// Expect RTO (TLP is disabled)
++.43 > P. 4001:5001(1000) ack 1
+
+// Expect RTO with backoff
++.865 > P. 4001:5001(1000) ack 1
+
++.10 < . 1:1(0) ack 5001 win 257
+
+// Re-enable TLP
++0 `sysctl -q net.ipv4.tcp_early_retrans=3`

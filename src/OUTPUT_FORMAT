@@ -1,0 +1,35 @@
+ 1 Input filename
+ 2 Flow index
+ 3 Direction
+ 4 # data packets
+ 5 # lost packets
+ 6 # ACKs with SACK blocks
+ 7 RTT (us) (min)
+ 8 RTT (us) (P10)
+ 9 RTT (us) (P25)
+10 RTT (us) (P50)
+11 RTT (us) (P75)
+12 RTT (us) (P90)
+13 RTT (us) (max)
+14 Retransmission Delay (us) (min)
+15 Retransmission Delay (us) (P10)
+16 Retransmission Delay (us) (P25)
+17 Retransmission Delay (us) (P50)
+18 Retransmission Delay (us) (P75)
+19 Retransmission Delay (us) (P90)
+20 Retransmission Delay (us) (max)
+21 Final retransmission delay (us) (min)
+22 Final retransmission delay (us) (P10)
+23 Final retransmission delay (us) (P25)
+24 Final retransmission delay (us) (P50)
+25 Final retransmission delay (us) (P75)
+26 Final retransmission delay (us) (P90)
+27 Final retransmission delay (us) (max)
+28 # retransmission attempts (min)
+29 # retransmission attempts (P10)
+30 # retransmission attempts (P25)
+31 # retransmission attempts (P50)
+32 # retransmission attempts (P75)
+33 # retransmission attempts (P90)
+34 # retransmission attempts (max)
+35 Unacked bytes/RTT Pearson correlation coefficient
